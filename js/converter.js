@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // DOM elements
     const conversionType = document.getElementById('conversionType');
     const fromUnit = document.getElementById('fromUnit');
@@ -29,67 +29,67 @@ document.addEventListener('DOMContentLoaded', function() {
     // Conversion factors
     const conversionFactors = {
         height: {
-            cm: { 
-                m: 0.01, 
-                in: 0.393701, 
-                ft: 0.0328084 
+            cm: {
+                m: 0.01,
+                in: 0.393701,
+                ft: 0.0328084
             },
-            m: { 
-                cm: 100, 
-                in: 39.3701, 
-                ft: 3.28084 
+            m: {
+                cm: 100,
+                in: 39.3701,
+                ft: 3.28084
             },
-            in: { 
-                cm: 2.54, 
-                m: 0.0254, 
-                ft: 0.0833333 
+            in: {
+                cm: 2.54,
+                m: 0.0254,
+                ft: 0.0833333
             },
-            ft: { 
-                cm: 30.48, 
-                m: 0.3048, 
-                in: 12 
+            ft: {
+                cm: 30.48,
+                m: 0.3048,
+                in: 12
             }
         },
         weight: {
-            g: { 
-                kg: 0.001, 
-                oz: 0.035274, 
-                lb: 0.00220462 
+            g: {
+                kg: 0.001,
+                oz: 0.035274,
+                lb: 0.00220462
             },
-            kg: { 
-                g: 1000, 
-                oz: 35.274, 
-                lb: 2.20462 
+            kg: {
+                g: 1000,
+                oz: 35.274,
+                lb: 2.20462
             },
-            oz: { 
-                g: 28.3495, 
-                kg: 0.0283495, 
-                lb: 0.0625 
+            oz: {
+                g: 28.3495,
+                kg: 0.0283495,
+                lb: 0.0625
             },
-            lb: { 
-                g: 453.592, 
-                kg: 0.453592, 
-                oz: 16 
+            lb: {
+                g: 453.592,
+                kg: 0.453592,
+                oz: 16
             }
         }
     };
 
     // Event listeners
-    conversionType.addEventListener('change', function() {
+    conversionType.addEventListener('change', function () {
         const selectedType = this.value;
-        
+
         // Reset form
         fromUnit.innerHTML = '<option value="">Select unit</option>';
         toUnit.innerHTML = '<option value="">Select unit</option>';
         valueInput.value = '';
         resultsDiv.style.display = 'none';
         errorDiv.textContent = '';
-        
+
         if (selectedType) {
             // Enable unit selects
             fromUnit.disabled = false;
             toUnit.disabled = false;
-            
+
             // Populate unit options
             units[selectedType].forEach(unit => {
                 fromUnit.innerHTML += `<option value="${unit.value}">${unit.name} (${unit.value})</option>`;
@@ -110,12 +110,12 @@ document.addEventListener('DOMContentLoaded', function() {
     convertBtn.addEventListener('click', convertValue);
 
     function updateConvertButtonState() {
-        const isReady = conversionType.value && 
-                       fromUnit.value && 
-                       toUnit.value && 
-                       valueInput.value && 
-                       !isNaN(valueInput.value);
-        
+        const isReady = conversionType.value &&
+            fromUnit.value &&
+            toUnit.value &&
+            valueInput.value &&
+            !isNaN(valueInput.value);
+
         valueInput.disabled = !(conversionType.value && fromUnit.value && toUnit.value);
         convertBtn.disabled = !isReady;
     }
@@ -125,26 +125,26 @@ document.addEventListener('DOMContentLoaded', function() {
         const from = fromUnit.value;
         const to = toUnit.value;
         const value = parseFloat(valueInput.value);
-        
+
         // Validate
         if (from === to) {
             showError("Please select different units for conversion.");
             return;
         }
-        
+
         if (isNaN(value)) {
             showError("Please enter a valid number.");
             return;
         }
-        
+
         try {
             // Show loading state
             convertBtn.disabled = true;
             convertBtn.textContent = 'Converting...';
-            
+
             // Perform conversion
             const result = performConversion(type, from, to, value);
-            
+
             // Display results
             originalValue.textContent = `${value} ${getUnitName(type, from)} =`;
             convertedValue.textContent = `${result.toFixed(2)} ${getUnitName(type, to)}`;
@@ -162,11 +162,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function performConversion(type, from, to, value) {
         // Get the conversion factor
         const factor = conversionFactors[type][from][to];
-        
+
         if (factor === undefined) {
             throw new Error("Conversion not supported");
         }
-        
+
         return value * factor;
     }
 

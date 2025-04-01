@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Height and Weight Converter</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
     <div class="converter">
         <h1>Height and Weight Converter</h1>
-        
+
         <div class="form-group">
             <label for="conversionType">Conversion Type</label>
             <select id="conversionType">
@@ -18,30 +20,30 @@
                 <option value="weight">Weight Conversion</option>
             </select>
         </div>
-        
+
         <div class="form-group" id="fromUnitGroup">
             <label for="fromUnit">From Unit</label>
             <select id="fromUnit" disabled>
                 <option value="">Select unit first</option>
             </select>
         </div>
-        
+
         <div class="form-group" id="toUnitGroup">
             <label for="toUnit">To Unit</label>
             <select id="toUnit" disabled>
                 <option value="">Select unit first</option>
             </select>
         </div>
-        
+
         <div class="form-group">
             <label for="value">Value to Convert</label>
             <input type="number" id="value" placeholder="Enter value" disabled>
         </div>
-        
+
         <button id="convertBtn" disabled>Convert</button>
-        
+
         <div id="error" class="error"></div>
-        
+
         <div id="results" class="results">
             <h3>Conversion Result</h3>
             <p id="originalValue"></p>
@@ -51,4 +53,5 @@
 
     <script src="js/converter.js"></script>
 </body>
+
 </html>

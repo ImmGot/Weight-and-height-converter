@@ -5,31 +5,38 @@ body {
     padding: 20px;
     background-color: #f5f5f5;
 }
+
 .converter {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 h1 {
     text-align: center;
     color: #333;
 }
+
 .form-group {
     margin-bottom: 15px;
 }
+
 label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
-select, input {
+
+select,
+input {
     width: 100%;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
 }
+
 button {
     background-color: #4CAF50;
     color: white;
@@ -40,9 +47,11 @@ button {
     width: 100%;
     font-size: 16px;
 }
+
 button:hover {
     background-color: #45a049;
 }
+
 .results {
     margin-top: 20px;
     padding: 15px;
@@ -50,6 +59,7 @@ button:hover {
     border-radius: 4px;
     display: none;
 }
+
 .error {
     color: red;
     margin-top: 10px;
